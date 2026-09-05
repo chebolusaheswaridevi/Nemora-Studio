@@ -35,6 +35,7 @@ export default function HomePage() {
         <div id="hero-bg-photo" aria-hidden="true" />
         <div id="hero-tint" aria-hidden="true" />
         <div id="hero-left-grad" aria-hidden="true" />
+        <div id="hero-top-fade" aria-hidden="true" />
         <div id="hero-bottom-fade" aria-hidden="true" />
 
         <div className="hero-inner">
@@ -315,7 +316,7 @@ export default function HomePage() {
             <div className="sf-dot-col">
               <div className="sf-node" id="sfNode0" />
             </div>
-            <div className="sf-text" style={{ padding: '48px 0 48px 72px' }}>
+            <div className="sf-text sf-text-right sf-visual-wrap">
               <div className="sf-visual right reveal reveal-delay-2">
                 <div className="fv-card" style={{ animation: 'home-float-a 5s ease-in-out infinite' }}>
                   <div className="fv-topbar">
@@ -364,7 +365,7 @@ export default function HomePage() {
           </div>
 
           <div className="sf-row" data-row="1">
-            <div className="sf-text sf-text-left" style={{ justifyContent: 'center' }}>
+            <div className="sf-text sf-text-left sf-visual-wrap" style={{ justifyContent: 'center' }}>
               <div className="sf-visual left reveal reveal-delay-1">
                 <div className="fv-card" style={{ animation: 'home-float-b 6s ease-in-out infinite' }}>
                   <div className="fv-topbar">
@@ -479,7 +480,7 @@ export default function HomePage() {
             <div className="sf-dot-col">
               <div className="sf-node" id="sfNode2" />
             </div>
-            <div className="sf-text" style={{ padding: '48px 0 48px 72px' }}>
+            <div className="sf-text sf-text-right sf-visual-wrap">
               <div className="sf-visual right reveal reveal-delay-2">
                 <div className="fv-card" style={{ animation: 'home-float-a 5.5s ease-in-out infinite 0.8s' }}>
                   <div className="fv-topbar">

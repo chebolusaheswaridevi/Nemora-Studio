@@ -48,6 +48,15 @@ from{transform:scale(1)} to{transform:scale(1.04)}
   pointer-events:none;
 }
 
+/* Mutes the streaky cloud light-trails in the top portion of the source
+   background photo — visible between the nav and the skyline. */
+.page-home #hero-top-fade {
+  position:absolute; top:0; left:0; right:0; height:260px;
+  background:linear-gradient(to bottom, rgba(35,40,120,0.75) 0%, rgba(35,40,120,0.35) 45%, transparent 100%);
+  z-index:3;
+  pointer-events:none;
+}
+
 .page-home #hero-canvas {
   display:none;
 }
@@ -1387,6 +1396,14 @@ from{transform:translateX(0)}
 }
 
 .page-home .sf-dot-col {
+  display:none
+}
+
+/* These wrappers only exist to position the desktop visual card (already
+   hidden via .sf-visual{display:none} below) — without this, the empty
+   wrapper's own padding/flex sizing still reserved ~100px of blank space
+   per row on mobile, three times over. */
+.page-home .sf-visual-wrap {
   display:none
 }
 
