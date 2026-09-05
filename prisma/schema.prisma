@@ -1,0 +1,75 @@
+// Nemora database schema — PostgreSQL via Prisma.
+// Provider: Neon (see README "Database" section for why over Supabase).
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum LeadSource {
+  HOMEPAGE_HERO
+  CONTACT_FORM
+  DEMO_PAGE
+  PRICING_PLAN
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  CUSTOMER
+  CLOSED
+}
+
+model Lead {
+  id          String     @id @default(cuid())
+  name        String?
+  email       String
+  business    String?
+  industry    String?
+  channel     String? // channel of interest: voice / chat / whatsapp / email
+  message     String?
+  plan        String? // pricing plan selected, if any (spark / pulse / apex / enterprise)
+  billing     String? // "monthly" | "annual", set alongside `plan`
+  source      LeadSource @default(CONTACT_FORM)
+  status      LeadStatus @default(NEW)
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  stripeSessionId      String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@index([email])
+  @@index([createdAt])
+}
+
+enum TestimonialStatus {
+  pending
+  approved
+  rejected
+}
+
+model Testimonial {
+  id        String            @id @default(cuid())
+  name      String
+  business  String
+  category  String // clinic | coach | ecom | service
+  rating    Int               @default(5)
+  result    String?
+  story     String
+  status    TestimonialStatus @default(pending)
+  createdAt DateTime          @default(now())
+
+  @@index([status])
+}
+
+model DemoConversation {
+  id        String   @id @default(cuid())
+  channel   String // chat | voice | whatsapp | email | gpt
+  scenario  String
+  transcript Json
+  createdAt DateTime @default(now())
+}
