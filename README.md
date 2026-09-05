@@ -27,7 +27,8 @@ See `.env.example` for the full list with inline comments. Summary:
 
 | Variable | Required for | Notes |
 |---|---|---|
-| `DATABASE_URL` | Lead/testimonial storage, Stripe records | Postgres connection string (Neon) |
+| `DATABASE_URL` | Lead/testimonial storage, Stripe records | Postgres connection string (Supabase transaction pooler) |
+| `DIRECT_URL` | Prisma migrations only | Supabase session pooler — required alongside `DATABASE_URL` |
 | `STRIPE_SECRET_KEY` / `STRIPE_WEBHOOK_SECRET` | Pricing page checkout | Use Stripe **test mode** keys |
 | `RESEND_API_KEY` | Email notifications | Without it, emails are logged to the server console instead |
 | `UPSTASH_REDIS_REST_URL` / `_TOKEN` | Distributed rate limiting | Without it, an in-memory limiter is used (fine for local dev only) |
@@ -56,10 +57,13 @@ The Live Demo itself needs **no API key at all** — see "Live Demo" below.
   a dependency for any new interaction work; it wasn't needed to match the
   reference 1:1. The shared `useReveal()` hook (`src/lib/useReveal.ts`) ports
   the mockups' `IntersectionObserver` scroll-reveal system as a reusable hook.
-- **Database**: PostgreSQL via Prisma. **Neon** was chosen over Supabase
-  purely because this project only needs a plain Postgres connection string —
-  no need for Supabase's auth/storage/realtime layer, so the simpler
-  serverless-Postgres provider was the smaller surface area.
+- **Database**: PostgreSQL via Prisma, hosted on **Supabase**. Only the raw
+  Postgres connection is used — no Supabase client library, Auth, or Storage —
+  since Prisma already owns the schema and query layer. Two connection
+  strings are required: `DATABASE_URL` (the transaction-mode pooler, used at
+  runtime) and `DIRECT_URL` (the session-mode pooler, used only for `prisma
+  db push`/migrations, since the transaction pooler doesn't support the
+  prepared statements Prisma's migration engine needs).
 - **Email**: Resend, with a console-log fallback when `RESEND_API_KEY` is unset.
 - **Validation**: Zod schemas in `src/lib/schemas.ts`, shared by the API routes
   (client-side forms do a light check before submitting, but the API route is

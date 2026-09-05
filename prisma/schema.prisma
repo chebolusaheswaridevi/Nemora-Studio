@@ -1,12 +1,15 @@
 // Nemora database schema — PostgreSQL via Prisma.
-// Provider: Neon (see README "Database" section for why over Supabase).
+// Provider: Supabase. DATABASE_URL is the transaction-mode pooler (used at
+// runtime); DIRECT_URL is the session-mode pooler, required by Prisma for
+// migrations since the transaction pooler doesn't support prepared statements.
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 enum LeadSource {
