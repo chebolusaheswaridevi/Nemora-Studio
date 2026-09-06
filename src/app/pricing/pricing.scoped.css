@@ -630,6 +630,10 @@ from{stroke-dashoffset:20} to{stroke-dashoffset:0}
   transform:translateY(-2px); box-shadow:0 14px 48px rgba(110,86,255,0.5)
 }
 
+.page-pricing .cta-btn-primary svg {
+  width:18px; height:18px
+}
+
 .page-pricing .cta-btn-secondary {
   display:inline-flex; align-items:center; gap:8px;
   padding:16px 28px; border-radius:50px;
