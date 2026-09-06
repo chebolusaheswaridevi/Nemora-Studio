@@ -934,8 +934,16 @@ from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)}
   grid-template-columns:56px 1fr; column-gap:16px
 }
 
-.page-about .tl-spine,
-.page-about .tl-progress {
+/* .tl-progress is rendered as a CHILD of .tl-spine (see StoryTimeline.tsx),
+   and .tl-spine's own position:absolute makes it .tl-progress's containing
+   block — so .tl-progress's left is relative to .tl-spine's narrow 2px box,
+   not to .timeline. Only .tl-spine needs repositioning here; .tl-progress's
+   unconditional left:50% (below, untouched) already centers it within that
+   2px box, which keeps it glued to .tl-spine wherever .tl-spine moves.
+   Overriding .tl-progress's left here too (a past mistake) offset it 28px
+   from .tl-spine's own edge instead of onto it, producing a visible second
+   line next to the real one. */
+.page-about .tl-spine {
   left:28px
 }
 
