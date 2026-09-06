@@ -6,7 +6,7 @@
 
 .page-home #hero-bg-photo {
   position:absolute; inset:0;
-  background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1920&q=90&fit=crop');
+  background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1920&h=800&q=90&fit=crop&crop=bottom');
   background-size:cover;
   background-position:center center;
   animation:home-slowzoom 18s ease-in-out infinite alternate;
@@ -43,7 +43,7 @@ from{transform:scale(1)} to{transform:scale(1.04)}
 
 .page-home #hero-bottom-fade {
   position:absolute; bottom:0; left:0; right:0; height:180px;
-  background:linear-gradient(to bottom, transparent, rgba(13,13,34,0.0));
+  background:linear-gradient(to bottom, transparent, var(--ink));
   z-index:4;
   pointer-events:none;
 }
