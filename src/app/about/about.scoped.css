@@ -919,19 +919,23 @@ from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)}
 }
 
 .page-about .tl-row {
-  grid-template-columns:1fr 48px
+  grid-template-columns:1fr
 }
 
+/* Whichever side has no content for a given row is an empty placeholder
+   div (see about/page.tsx) that only exists to hold the desktop
+   left/right layout. The old rule tried to tell rows apart with
+   :nth-child(even), but .tl-spine is a sibling before the first .tl-row,
+   which shifts the count by one and hides the wrong side on every row.
+   :empty is immune to that — it just hides whichever div has nothing in it. */
+.page-about .tl-left:empty,
+.page-about .tl-right:empty {
+  display:none
+}
+
+.page-about .tl-left,
 .page-about .tl-right {
-  display:none
-}
-
-.page-about .tl-row:nth-child(even) .tl-left {
-  display:none
-}
-
-.page-about .tl-row:nth-child(even) .tl-right {
-  display:block
+  text-align:left; padding:24px 0 24px 56px
 }
 
 .page-about .team-grid {

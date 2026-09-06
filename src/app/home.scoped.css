@@ -1399,6 +1399,15 @@ from{transform:translateX(0)}
   display:none
 }
 
+/* The timeline line only makes sense aligned with the desktop dot column
+   (centered via the 1fr 64px 1fr grid) — once .sf-row collapses to a
+   single column above, the line's left:50% runs straight through the
+   text instead of a hidden dot column. */
+.page-home .timeline-line-bg,
+.page-home .timeline-line-progress {
+  display:none
+}
+
 /* These wrappers only exist to position the desktop visual card (already
    hidden via .sf-visual{display:none} below) — without this, the empty
    wrapper's own padding/flex sizing still reserved ~100px of blank space
