@@ -918,8 +918,25 @@ from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)}
   padding:80px 24px 60px
 }
 
+/* .tl-spine/.tl-progress are positioned absolute left:50% of .timeline
+   itself, not of any row's content — correct on desktop only because the
+   two content columns sit outside that 50% midpoint. A single 1fr column
+   stretches .tl-left/.tl-right across the row's full width, so the line
+   at the row's horizontal center sits inside that box, not beside it: a
+   left-padding on the text narrows where words START, but the line
+   isn't at the left edge, it's in the middle, so wrapped text still
+   reaches or crosses it. Giving the row a real 56px column for the dot
+   (matching .tl-node-inner's 40px circle plus breathing room) and moving
+   the line to that column's center (28px) puts text in its own 1fr
+   column entirely to the line's right — a real side-by-side split
+   instead of an indent into a full-width box. */
 .page-about .tl-row {
-  grid-template-columns:1fr
+  grid-template-columns:56px 1fr; column-gap:16px
+}
+
+.page-about .tl-spine,
+.page-about .tl-progress {
+  left:28px
 }
 
 /* Whichever side has no content for a given row is an empty placeholder
@@ -935,7 +952,7 @@ from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)}
 
 .page-about .tl-left,
 .page-about .tl-right {
-  text-align:left; padding:24px 0 24px 56px
+  text-align:left; padding:24px 0
 }
 
 /* Each row's content lives in whichever of .tl-left/.tl-right isn't empty,
