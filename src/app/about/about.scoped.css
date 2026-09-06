@@ -938,6 +938,18 @@ from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)}
   text-align:left; padding:24px 0 24px 56px
 }
 
+/* Each row's content lives in whichever of .tl-left/.tl-right isn't empty,
+   and grid auto-placement stacks the three children in DOM order — so
+   left-content rows render content-then-dot while right-content rows
+   render dot-then-content. Alternating between the two puts two rows'
+   dots back-to-back at every other transition (e.g. row1's trailing dot
+   sits directly above row2's leading dot). Forcing the dot to order:-1
+   makes it always render first, so every row is dot-then-content and no
+   two dots ever end up adjacent. */
+.page-about .tl-node {
+  order:-1
+}
+
 .page-about .team-grid {
   grid-template-columns:1fr
 }
