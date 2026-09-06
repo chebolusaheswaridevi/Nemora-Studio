@@ -198,7 +198,7 @@ export default function Page() {
       
       {/* ════════════════ STATS BAND ════════════════ */}
       <div className="stats-band" aria-label="Key metrics">
-        <div className="stats-band-inner" style={{ maxWidth: '1160px', margin: '0 auto', padding: '0 48px', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)' }}>
+        <div className="stats-band-inner" style={{ maxWidth: '1160px', margin: '0 auto', padding: '0 48px' }}>
           <div className="stat-cell">
             <div className="stat-num" data-target="4.9" data-suffix="★" data-decimals="1">0★</div>
             <div className="stat-lbl">Average rating</div>
