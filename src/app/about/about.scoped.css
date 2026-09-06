@@ -918,6 +918,19 @@ from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)}
   padding:80px 24px 60px
 }
 
+/* Purely decorative full-height accent for #sec-story, unrelated to the
+   timeline's own .tl-spine/.tl-progress (confirmed separate elements via
+   live DOM inspection). At left:50% of the whole section it happens to
+   land in the gap between the two desktop columns, but single-column
+   mobile content occupies nearly the full section width, so the same
+   50% mark falls inside the text instead. It has no dots to align with
+   and no functional role, so there's no correct mobile position to move
+   it to -- hidden, same as .timeline-line-bg/.timeline-line-progress on
+   the homepage's equivalent section. */
+.page-about .story-bg-line {
+  display:none
+}
+
 /* .tl-spine/.tl-progress are positioned absolute left:50% of .timeline
    itself, not of any row's content — correct on desktop only because the
    two content columns sit outside that 50% midpoint. A single 1fr column
