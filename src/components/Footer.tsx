@@ -26,18 +26,24 @@ const COLUMNS = [
     links: [
       { label: 'Live Demos', href: '/demo' },
       { label: 'Case Studies', href: '/customers' },
-      { label: 'Blog', href: '#' },
-      { label: 'Documentation', href: '#' },
-      { label: 'Status', href: '#' },
+      // TODO: Create /blog page
+      { label: 'Blog', href: '/blog' },
+      // TODO: Create /docs page
+      { label: 'Documentation', href: '/docs' },
+      // TODO: Create /status page
+      { label: 'Status', href: '/status' },
     ],
   },
   {
     title: 'Company',
     links: [
       { label: 'About Us', href: '/about' },
-      { label: 'Careers', href: '#' },
-      { label: 'Privacy Policy', href: '#' },
-      { label: 'Terms of Service', href: '#' },
+      // TODO: Create /careers page
+      { label: 'Careers', href: '/careers' },
+      // TODO: Create /privacy page
+      { label: 'Privacy Policy', href: '/privacy' },
+      // TODO: Create /terms page
+      { label: 'Terms of Service', href: '/terms' },
       { label: 'Contact Sales', href: '/contact' },
     ],
   },
@@ -46,6 +52,7 @@ const COLUMNS = [
 const SOCIALS = [
   {
     label: 'Twitter',
+    href: 'https://twitter.com/nemorastudio',
     path: 'M13 2L8.5 7.5M13 2H10M13 2L8.5 7.5L13 13H10L7.5 9.5M8.5 7.5L2 2H5L7.5 5.5M8.5 7.5L7.5 9.5M7.5 9.5L2 13H5',
   },
 ];
@@ -66,7 +73,13 @@ export default function Footer() {
             </div>
             <div className="footer-tagline">AI-native client intelligence for businesses that refuse to miss a lead.</div>
             <div className="footer-socials">
-              <div className="footer-social" role="link" tabIndex={0} aria-label="Twitter">
+              <a
+                className="footer-social"
+                href={SOCIALS[0].href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+              >
                 <svg viewBox="0 0 15 15" fill="none" aria-hidden="true">
                   <path
                     d={SOCIALS[0].path}
@@ -76,22 +89,39 @@ export default function Footer() {
                     strokeLinejoin="round"
                   />
                 </svg>
-              </div>
-              <div className="footer-social" role="link" tabIndex={0} aria-label="LinkedIn">
+              </a>
+              <a
+                className="footer-social"
+                href="https://linkedin.com/company/nemorastudio"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+              >
                 <svg viewBox="0 0 15 15" fill="none" aria-hidden="true">
                   <rect x="1.5" y="1.5" width="12" height="12" rx="2" stroke="currentColor" strokeWidth="1.2" />
                   <path d="M5 6v5M5 4v.5M8 11V8c0-1.1.9-2 2-2s2 .9 2 2v3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
                 </svg>
-              </div>
-              <div className="footer-social" role="link" tabIndex={0} aria-label="Instagram">
+              </a>
+              <a
+                className="footer-social"
+                href="https://instagram.com/nemorastudio"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
                 <svg viewBox="0 0 15 15" fill="none" aria-hidden="true">
                   <rect x="2" y="2" width="11" height="11" rx="3" stroke="currentColor" strokeWidth="1.2" />
                   <circle cx="7.5" cy="7.5" r="2.5" stroke="currentColor" strokeWidth="1.2" />
                   <circle cx="11" cy="4" r="0.6" fill="currentColor" />
                 </svg>
-              </div>
+              </a>
             </div>
           </div>
+
+          {/* Visually hidden — keeps the document's heading order sequential
+              (page content ends on an H2, footer columns are H4s) without
+              changing how the footer looks. */}
+          <h3 className="sr-only">Footer navigation</h3>
 
           {COLUMNS.map((col) => (
             <div className="footer-col" key={col.title}>
@@ -108,10 +138,14 @@ export default function Footer() {
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} Nemora. All rights reserved.</p>
           <div className="footer-legal">
-            <Link href="#">Privacy</Link>
-            <Link href="#">Terms</Link>
-            <Link href="#">Security</Link>
-            <Link href="#">Cookies</Link>
+            {/* TODO: Create /privacy page */}
+            <Link href="/privacy">Privacy</Link>
+            {/* TODO: Create /terms page */}
+            <Link href="/terms">Terms</Link>
+            {/* TODO: Create /security page */}
+            <Link href="/security">Security</Link>
+            {/* TODO: Create /cookies page */}
+            <Link href="/cookies">Cookies</Link>
           </div>
         </div>
       </div>

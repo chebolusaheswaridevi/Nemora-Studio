@@ -31,5 +31,9 @@ next-env.d.ts
 # prisma
 /prisma/dev.db
 
+# next-sitemap (regenerated on every `next build` via postbuild)
+/public/sitemap.xml
+/public/sitemap-*.xml
+
 # dev-only extraction scratch (see scripts/extract-ref.js)
 /.extract

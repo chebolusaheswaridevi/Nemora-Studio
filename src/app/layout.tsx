@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import { SITE_URL, SITE_NAME, TWITTER_HANDLE, OG_IMAGE } from '@/lib/seo';
 import './globals.css';
 
 const inter = Inter({
@@ -19,9 +20,20 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Nemora — Your Business, Running on Intelligence',
+  metadataBase: new URL(SITE_URL),
+  title: 'AI Business Automation for Small Businesses | Nemora',
   description:
-    'Nemora is the AI business-automation platform that runs voice, chat, WhatsApp, and email as your team — so small and mid-size businesses stop missing leads.',
+    'Nemora automates voice calls, WhatsApp, chat, and email for small businesses — so you never miss a lead. AI-powered 24/7 front desk for clinics, coaches, and ecommerce brands.',
+  openGraph: {
+    siteName: SITE_NAME,
+    type: 'website',
+    locale: 'en_IN',
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: TWITTER_HANDLE,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
