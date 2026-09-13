@@ -40,9 +40,7 @@ const COLUMNS = [
       { label: 'About Us', href: '/about' },
       // TODO: Create /careers page
       { label: 'Careers', href: '/careers' },
-      // TODO: Create /privacy page
       { label: 'Privacy Policy', href: '/privacy' },
-      // TODO: Create /terms page
       { label: 'Terms of Service', href: '/terms' },
       { label: 'Contact Sales', href: '/contact' },
     ],
@@ -138,9 +136,7 @@ export default function Footer() {
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} Nemora. All rights reserved.</p>
           <div className="footer-legal">
-            {/* TODO: Create /privacy page */}
             <Link href="/privacy">Privacy</Link>
-            {/* TODO: Create /terms page */}
             <Link href="/terms">Terms</Link>
             {/* TODO: Create /security page */}
             <Link href="/security">Security</Link>
